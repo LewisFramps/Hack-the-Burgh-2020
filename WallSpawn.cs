@@ -20,10 +20,10 @@ public class WallSpawn : MonoBehaviour
 
     void Start()
     {
-        GenerateRoom(w, h, defWall, defDecor, defBackground, defdoor, deffloor, doorsOpen, defBlock, EmptyObject);
+        GenerateRoom(w, h, defWall, defDecor, defBackground, defdoor, deffloor, doorsOpen, defBlock, EmptyObject, enemies);
     }
 
-    public void GenerateRoom(int width, int height, GameObject[] Wall, GameObject[] Decor, GameObject[] Background, GameObject door, GameObject floor, bool[] doors, GameObject[] blocks, GameObject emptyboy){
+    public void GenerateRoom(int width, int height, GameObject[] Wall, GameObject[] Decor, GameObject[] Background, GameObject door, GameObject floor, bool[] doors, GameObject[] blocks, GameObject emptyboy, GameObject[] newEnemies){
         GameObject papa = (GameObject) Instantiate(emptyboy, (new Vector2(0,0)), Quaternion.identity);
         w = width;
         h = height;
@@ -35,6 +35,7 @@ public class WallSpawn : MonoBehaviour
         defBlock = blocks;
         doorsOpen = doors;
         EmptyObject = emptyboy;
+        enemies = newEnemies;
         for(int x = -30; x < 30; x++){
             for(int y = -30; y < 30; y++){
                 GameObject beans = (GameObject) Instantiate(Background[Random.Range(0,Background.Length)], (new Vector2(x,y)), Quaternion.identity);
